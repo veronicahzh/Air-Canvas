@@ -122,9 +122,12 @@ def main():
             # overlay drawing onto camera feed
             combined = cv2.addWeighted(frame, 1.0, canvas, 0.9, 0)
 
+            # convert image to grayscale
+            gray_img = cv2.cvtColor(canvas, cv2.COLOR_BGR2GRAY)
+
             # display mode
             cv2.putText(
-                combined,
+                gray_img,
                 mode_text,
                 (20, 40),
                 cv2.FONT_HERSHEY_SIMPLEX,
