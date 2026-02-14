@@ -125,6 +125,19 @@ def main():
             # convert image to grayscale
             gray_img = cv2.cvtColor(canvas, cv2.COLOR_BGR2GRAY)
 
+            print(canvas.shape)
+            print(gray_img.shape)
+
+            # creating threshold for AA
+            retval, dst = cv2.threshold(
+                gray_img,
+                230,
+                255,
+                cv2.THRESH_BINARY
+            )
+
+            print(np.unique(dst))
+
             # display mode
             cv2.putText(
                 gray_img,
