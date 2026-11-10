@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import mediapipe as mp
 
+from splash import show_splash
+
 mp_hands = mp.solutions.hands
 mp_draw = mp.solutions.drawing_utils
 
@@ -38,6 +40,14 @@ def main():
     cap = cv2.VideoCapture(1) # mac camera
     
     if not cap.isOpened():
+        return
+
+    window_name = "Air Canvas - Press Q to Quit"
+
+    # opening screen - any key starts, Q/Esc quits
+    if not show_splash(window_name):
+        cap.release()
+        cv2.destroyAllWindows()
         return
 
     canvas = None
@@ -149,7 +159,7 @@ def main():
                 2
             )
 
-            cv2.imshow("Air Canvas - Press Q to Quit", combined)
+            cv2.imshow(window_name, combined)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break
