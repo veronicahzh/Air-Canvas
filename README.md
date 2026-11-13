@@ -10,6 +10,38 @@ Air Canvas is a real-time computer vision drawing app that lets users draw in th
 - **Live webcam overlay** showing both the camera feed and drawing
 - **Real-time hand landmark detection** with MediaPipe
 
+## Getting Started
+
+### Requirements
+
+- Python 3.10
+- A webcam
+
+### Installation
+
+```bash
+git clone <repo-url>
+cd Air-Canvas
+python3.10 -m venv .venv
+source .venv/bin/activate
+pip install mediapipe==0.10.21 opencv-python numpy==1.26.4
+```
+
+> **Note:** Pin MediaPipe to 0.10.21 (or similar). The app uses the legacy `mp.solutions.hands` API, which newer MediaPipe releases have removed.
+
+### Running the App
+
+```bash
+source .venv/bin/activate
+python main.py
+```
+
+1. A splash screen appears. Press any key to start the camera, or **Q** / **Esc** to quit.
+2. Use the hand gestures below to draw, pause, and clear.
+3. Press **Q** to quit.
+
+On macOS, the first run asks for camera access for your terminal (or VS Code). If no video appears, allow it under **System Settings → Privacy & Security → Camera**, then restart the terminal.
+
 ## Demo Controls
 
 The program recognizes three hand gestures:
